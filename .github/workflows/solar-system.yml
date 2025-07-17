@@ -33,6 +33,7 @@ jobs:
     
     - name: Upload Teste Results
       uses: actions/upload-artifact@v4
+      if: success() || failure() 
       with:
         path: test-results.xml
         name: Mocha-Teste-Result
