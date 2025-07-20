@@ -111,21 +111,21 @@ jobs:
           docker run --name solay-system-app -d \
             -p 3000:3000 \
             -e MONGO_URI=$MONGO_URI \
-            -e MONGOU_USERNAME=$MONGO_USERNAME \
+            -e MONGO_USERNAME=$MONGO_USERNAME \
             -e MONGO_PASSWORD=$MONGO_PASSWORD \
             ${{ vars.DOCKERHUB_USERNAME }}/solar-system:${{ github.sha }}
 
             echo Testing Image URL using wget
             wget -q -O - 127.0.0.1:3000/live | grep live
 
-      - name: Cotainer Registry Push
+      - name: Container Registry Push
         uses: docker/build-push-action@v6
         with:
           context: .
           push: true
           tags: | 
             ${{ vars.DOCKERHUB_USERNAME }}/solar-system:${{ github.sha }}
-            ghcr.io/${{ github.repository_owner }}/solay-system:${{ github.sha }}
+            ghcr.io/${{ github.repository_owner }}/solar-system:${{ github.sha }}
 
     
         
