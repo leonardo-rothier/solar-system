@@ -101,12 +101,12 @@ jobs:
       - name: Docker Image testing
         run: |
           docker images
-          docker run --name solay-system -d \
+          docker run --name solay-system-app -d \
             -p 3000:3000 \
             -e MONGO_URI=$MONGO_URI \
             -e MONGOU_USERNAME=$MONGO_USERNAME \
             -e MONGO_PASSWORD=$MONGO_PASSWORD \
-            ${{ vars.DOCKERHUB_USERNAME }}/solay-system:${{ github.sha }}
+            ${{ vars.DOCKERHUB_USERNAME }}/solar-system:${{ github.sha }}
 
             echo Testing Image URL using wget
             wget -q -O - 127.0.0.1:3000/live | grep live
